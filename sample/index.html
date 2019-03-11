@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Live input record and playback</title>
+  <style type='text/css'>
+    ul { list-style: none; }
+    #recordingslist audio { display: block; margin-bottom: 10px; }
+  </style>
+  <link rel="stylesheet" href="sample.css">
+</head>
+<body>
+
+<main>
+  <!--header-->
+  <h2>SpeechAce Sample Application</h2>
+
+  <form action="" class="form flex" method="">
+    <div class="form-control textarea">
+      <textarea name="" id="" cols="30" rows="5" placeholder="Enter your text"></textarea>
+    </div>
+    <div class="form-control recorder-container">
+      <button class="form-control-recorder" id="start" onclick="startRecording(this);">
+        Record
+      </button>
+      <button class="form-control-recorder" id="stop" onclick="stopRecording(this);">
+        Stop
+      </button>
+    </div>
+    <div class="form-control">
+      <label for="" class="form-control-file-upload">
+        <button class="btn">Choose file</button>
+        <input type="file" accept=".jpg, .png, .jpeg">
+      </label>
+    </div>
+    <div class="form-explanation">Record or upload an audio file containing the sentence or paragraph</div>
+    <button class="btn" type="submit">Check score</button>
+  </form>
+
+  <h2>Summary</h2>
+
+  <div class="summary">
+    <div class="summary-player">
+      <button class="summary-player__button">Play</button>
+    </div>
+    <div>
+      <div class="summary-explanation">
+        Overall score (Average of all phonemes score) 75% IELTS score 6.5 | PTE Score 8
+      </div>
+      <div class="summary-explanation">
+        Word count 9 | Syllable count 11 | Phone count 31 | Audio Length 0:53 | Words correct/mon 111 | Pauses 2
+        |
+        Pause duration 0:6 | MLR 1.22
+      </div>
+    </div>
+  </div>
+
+  <!--tables-->
+  <h2>Detailed score breakup</h2>
+
+  <div class="tables">
+    <div class="tables-blocks">
+      <table class="tables-blocks__word">
+        <tr>
+          <th></th>
+          <th>Word</th>
+          <th>Score</th>
+        </tr>
+        <tr>
+          <td>
+            <div class="player-button"> > </div>
+          </td>
+          <td>The</td>
+          <td>52%</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="player-button"> > </div>
+          </td>
+          <td>quick</td>
+          <td>22%</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="player-button"> > </div>
+          </td>
+          <td>brown</td>
+          <td>60%</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="player-button"> > </div>
+          </td>
+          <td>fox</td>
+          <td>60%</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="player-button"> > </div>
+          </td>
+          <td>jumped</td>
+          <td>60%</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="player-button"> > </div>
+          </td>
+          <td>over</td>
+          <td>60%</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="player-button"> > </div>
+          </td>
+          <td>the</td>
+          <td>60%</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="player-button"> > </div>
+          </td>
+          <td>lazy</td>
+          <td>60%</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="player-button"> > </div>
+          </td>
+          <td>dog</td>
+          <td>60%</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="player-button"> > </div>
+          </td>
+          <td>Average score</td>
+          <td>52%</td>
+        </tr>
+      </table>
+    </div>
+    <div class="tables-blocks">
+      <table class="tables-blocks__syllable">
+        <tr>
+          <th>Syllable</th>
+          <th>Score</th>
+        </tr>
+        <tr>
+          <td>The</td>
+          <td>52%</td>
+        </tr>
+        <tr>
+          <td>quick</td>
+          <td>22%</td>
+        </tr>
+        <tr>
+          <td>brown</td>
+          <td>60%</td>
+        </tr>
+        <tr>
+          <td>fox</td>
+          <td>60%</td>
+        </tr>
+        <tr>
+          <td>jumped</td>
+          <td>60%</td>
+        </tr>
+        <tr>
+          <td>0</td>
+          <td>60%</td>
+        </tr>
+        <tr>
+          <td>ver</td>
+          <td>60%</td>
+        </tr>
+        <tr>
+          <td>the</td>
+          <td>60%</td>
+        </tr>
+        <tr>
+          <td>lazy</td>
+          <td>60%</td>
+        </tr>
+        <tr>
+          <td>dog</td>
+          <td>60%</td>
+        </tr>
+        <tr>
+          <td>Average score</td>
+          <td>52%</td>
+        </tr>
+      </table>
+    </div>
+    <div class="tables-blocks">
+      <table class="tables-blocks__phoneme">
+        <tr>
+          <th>Phoneme</th>
+          <th>Score</th>
+        </tr>
+        <tr>
+          <td>dh</td>
+          <td>52%</td>
+        </tr>
+        <tr>
+          <td>ah</td>
+          <td>22%</td>
+        </tr>
+        <tr>
+          <td>k</td>
+          <td>60%</td>
+        </tr>
+        <tr>
+          <td>w</td>
+          <td>60%</td>
+        </tr>
+        <tr>
+          <td>ih</td>
+          <td>60%</td>
+        </tr>
+        <tr>
+          <td>k</td>
+          <td>60%</td>
+        </tr>
+        <tr>
+          <td>b</td>
+          <td>60%</td>
+        </tr>
+        <tr>
+          <td>r</td>
+          <td>60%</td>
+        </tr>
+        <tr>
+          <td>aw</td>
+          <td>60%</td>
+        </tr>
+        <tr>
+          <td>n</td>
+          <td>60%</td>
+        </tr>
+        <tr>
+          <td>f</td>
+          <td>60%</td>
+        </tr>
+        <tr>
+          <td>aa</td>
+          <td>0%</td>
+        </tr>
+        <tr>
+          <td>Average score</td>
+          <td>60%</td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+
+</main>
+
+  <!--<h1>Recorder.js simple WAV export example</h1>-->
+
+  <!--<p>Make sure you are using a recent version of Google Chrome.</p>-->
+  <!--<p>Also before you enable microphone input either plug in headphones or turn the volume down if you want to avoid ear splitting feedback!</p>-->
+
+  <!--<button onclick="startRecording(this);">record</button>-->
+  <!--<button onclick="stopRecording(this);" disabled>stop</button>-->
+  
+  <h2>Recordings</h2>
+  <ul id="recordingslist"></ul>
+  
+  <h2>Log</h2>
+  <pre id="log"></pre>
+
+
+
+  <script src="./innerLogic.js"></script>
+  <script src="./recorder.js"></script>
+</body>
+</html>
